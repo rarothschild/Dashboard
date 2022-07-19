@@ -5,6 +5,8 @@ export default class HouseFinance extends Component{
         super(props);
     }
     render() {
-        return <p>This is page</p>;
+        return (
+        <p>This is page</p>
+        )
     }
 }

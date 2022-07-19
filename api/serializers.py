@@ -1,37 +1,38 @@
 from rest_framework import serializers
-from .models import user, utility, house, ledger
+from rest_auth.registration.serializers import RegisterSerializer
+from .models import UserProfile, Utility, House, Ledger
 
-class userSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = user
+        model = UserProfile
         fields =  '__all__'
 
-class createUserSerializer(serializers.ModelSerializer):
+class CreateUserSerializer(RegisterSerializer):
     class Meta:
-        model = user
-        fields =  ('name')
-
-class ledgerSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ledger
+        model = UserProfile
         fields =  '__all__'
 
 class ledgerSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ledger
+        model = Ledger
+        fields =  '__all__'
+
+class ledgerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ledger
         fields =  '__all__'
 
 class utilitySerializer(serializers.ModelSerializer):
     class Meta:
-        model = utility
+        model = Utility
         fields =  '__all__'
 
 class houseSerializer(serializers.ModelSerializer):
     class Meta:
-        model = house
+        model = House
         fields =  '__all__'
 
 class createHouseSerializer(serializers.ModelSerializer):
     class Meta:
-        model = house
+        model = House
         fields =  '__all__'
