@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'rest_framework',
     'frontend.apps.FrontendConfig',
-    'allauth'
+    'allauth',
+    'myApps.HouseTrack.apps.HousetrackConfig',
+    'myApps.BackTester.apps.BacktesterConfig',
 ]
 
 MIDDLEWARE = [

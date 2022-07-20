@@ -1,3 +1,22 @@
+:root{
+	--backgroundColor: #8158af;
+    --mainColor:#9e76ca;
+	--secondaryColor:#5a2691;
+
+	--borderColor:#000000;
+
+	--mainText:black;
+	--secondaryText:#4b5156;
+
+	--themeDotBorder:#24292e;
+
+	--previewBg:rgb(251, 249, 243, 0.8);
+	--previewShadow:#f0ead6;
+
+	--buttonColor:black;
+
+}
+
 html, body{
     height:  100%;
     margin: 0;
@@ -17,3 +36,29 @@ html, body{
     height: 100%;
     display: flex;
 }
+
+#main-top {
+    width: 100px;
+    height: 100px;
+    display: flex;
+}
+
+#main-bottom {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+#gradient {
+    width: 100%;
+    height: 800px;
+    padding: 0px;
+    margin: 0px;
+  }

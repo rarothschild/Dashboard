@@ -7,7 +7,7 @@ function HomePage(){
     return (
         <Router>
             <Switch>
-                <Route exact path="/"><p>This is the butt page</p></Route>
+                <Route exact path="/"><p>This is the test page</p></Route>
                 <Route path='/HouseFinance' component={HouseFinance} />
                 <Route path='/CreateUser' component={CreateUser} />
             </Switch>
