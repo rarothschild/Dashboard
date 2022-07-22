@@ -17,8 +17,8 @@ export default class App extends Component {
   render() {
     return (
       <div className="center">
-        <div className="main-top">Top</div>
-        <div className="main-bottom">Bottom</div>
+        <div id="main-top">Top</div>
+        <div id="main-bottom">Bottom</div>
       </div>
     );
   }
