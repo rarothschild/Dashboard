@@ -1,8 +1,10 @@
 import { Component } from "react";
 import * as React from 'react';
+import UserProfCard from "./UserProfCard";
 import HomePage from "./HomePage";
 import Boarder from "./Boarder";
 import { render } from "react-dom";
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom"
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -16,9 +18,19 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="center">
-        <div id="main-top">Top</div>
-        <div id="main-bottom">Bottom</div>
+      <div>
+        <div id="header">
+          <UserProfCard />
+        </div>
+        <div class="content">
+          <Router>
+              <Switch>
+                  <Route exact path="/"><p>This is the test page</p></Route>
+                  <Route path='/HouseFinance'><p>This is the house finance page</p></Route>
+                  <Route path='/CreateUser'><p>This is the user page</p></Route>
+              </Switch>
+          </Router>
+        </div>
       </div>
     );
   }
