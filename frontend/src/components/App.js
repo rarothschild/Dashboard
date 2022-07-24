@@ -1,6 +1,7 @@
 import { Component } from "react";
 import * as React from 'react';
 import UserProfCard from "./UserProfCard";
+import HouseFinance from "./HouseFinance"
 import HomePage from "./HomePage";
 import Boarder from "./Boarder";
 import { render } from "react-dom";
@@ -22,14 +23,18 @@ export default class App extends Component {
         <div id="header">
           <UserProfCard />
         </div>
-        <div class="content">
-          <Router>
+        <div id="content" class="center">
+        <Paper>
+          <Box sx={{ width: '500px' , height: '500px', padding: '20px'}}>
+            <Router>
               <Switch>
-                  <Route exact path="/"><p>This is the test page</p></Route>
-                  <Route path='/HouseFinance'><p>This is the house finance page</p></Route>
-                  <Route path='/CreateUser'><p>This is the user page</p></Route>
+                <Route exact path="/"><p>This is the test page</p></Route>
+                <Route path='/HouseFinance'><HouseFinance /></Route>
+                <Route path='/CreateUser'><p>This is the user page</p></Route>
               </Switch>
-          </Router>
+            </Router>
+          </Box>
+        </Paper>
         </div>
       </div>
     );

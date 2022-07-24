@@ -1,12 +1,11 @@
-import React, { Component } from "react";
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Grid from "@material-ui/core/Grid";
+import Paper from '@mui/material/Paper';
 
-export default class HouseFinance extends Component{
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return (
-        <p>This is page</p>
-        )
-    }
+
+export default function HouseFinance() {
+    return(
+        <p>test</p>
+    )
 }

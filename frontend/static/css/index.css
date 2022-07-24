@@ -22,12 +22,13 @@ html, body{
 }
 
 #main {
-    padding: 50px;
+    width: 100%;
+    height: 100%;
 }
 
 #app {
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
 }
 
 #header {
@@ -42,11 +43,14 @@ html, body{
 }
 
 #content {
+    max-width: 80%;
+    min-width: 70%;
+}
+
+.center {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
     display: flex;
 }

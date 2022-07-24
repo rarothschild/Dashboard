@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Grid from "@material-ui/core/Grid";
+import Paper from '@mui/material/Paper';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
@@ -16,19 +17,30 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
+const profPic = styled('div')({
+    backgroundColor: 'aliceblue',
+});
+
 function UserProfCard() {
     return(
-        <Box sx={{height: '100px', width: '300px', border: '1px'}}>
-            <div>
-                <div>
-                    <Avatar>
-                        <QuestionMarkIcon />
-                    </Avatar>
-                </div>
-                <div>
-                    <IconButton variant="contained"><SettingsIcon/></IconButton>
-                </div>
-            </div>
+        <Box sx={{height: '100px', width: '250px', margin: '10px'}}>
+            <Paper>
+                <Grid container>
+                    <Grid item xs={4}>
+                        <profPic>
+                            <Avatar>
+                                <QuestionMarkIcon />
+                            </Avatar>
+                        </profPic>
+                        <div>
+                            <IconButton variant="contained"><SettingsIcon/></IconButton>
+                        </div>
+                    </Grid>
+                    <Grid item xs={8}>
+                        Robert Rothschild
+                    </Grid>
+                </Grid>
+            </Paper>
         </Box>
     )
 }
