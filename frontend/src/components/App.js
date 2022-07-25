@@ -4,7 +4,7 @@ import UserProfCard from "./UserProfCard";
 import HouseFinance from "./HouseFinance"
 import HomePage from "./HomePage";
 import Boarder from "./Boarder";
-import { render } from "react-dom";
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom"
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -23,7 +23,7 @@ export default class App extends Component {
         <div id="header">
           <UserProfCard />
         </div>
-        <div id="content" class="center">
+        <div id="content" className="center">
         <Paper>
           <Box sx={{ width: '500px' , height: '500px', padding: '20px'}}>
             <Router>
@@ -41,5 +41,6 @@ export default class App extends Component {
   }
 }
 
-const appDiv = document.getElementById("app");
-render(<App />, appDiv);
+const container = document.getElementById("app");
+const root = createRoot(container);
+root.render(<App />);

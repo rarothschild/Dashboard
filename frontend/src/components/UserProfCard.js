@@ -17,7 +17,7 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
-const profPic = styled('div')({
+const ProfPic = styled('div')({
     backgroundColor: 'aliceblue',
 });
 
@@ -27,11 +27,11 @@ function UserProfCard() {
             <Paper>
                 <Grid container>
                     <Grid item xs={4}>
-                        <profPic>
+                        <ProfPic>
                             <Avatar>
                                 <QuestionMarkIcon />
                             </Avatar>
-                        </profPic>
+                        </ProfPic>
                         <div>
                             <IconButton variant="contained"><SettingsIcon/></IconButton>
                         </div>

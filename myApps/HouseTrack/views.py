@@ -14,6 +14,7 @@ class ListHomes(APIView):
     def get(self,request,format=None):
         homes = [Home.address for Home in Home.objects.all()]
         return Response(homes, status=status.HTTP_200_OK)
+    Response({'Bad Request': 'Invalid data...'},status=status.HTTP_400_BAD_REQUEST)
 
 class CreateHome(APIView):
     serializer_class = CreateHomeSerializer
