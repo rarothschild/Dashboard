@@ -1,7 +1,7 @@
 import { Component } from "react";
 import * as React from 'react';
 import UserProfCard from "./UserProfCard";
-import HouseFinance from "./HouseFinance"
+import HouseFinance from "./HouseFinance";
 import HomePage from "./HomePage";
 import Boarder from "./Boarder";
 import { createRoot } from 'react-dom/client';

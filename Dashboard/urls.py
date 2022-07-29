@@ -13,7 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+from allauth.account.views import confirm_email
 from django.contrib import admin
+from django.conf.urls import url
 from django.urls import path, include
 
 urlpatterns = [
@@ -21,4 +24,8 @@ urlpatterns = [
     path('api/',include('api.urls')),
     path('apps/',include('myApps.urls')),
     path('',include('frontend.urls')),
+    url('rest-auth/', include('rest_auth.urls')),
+    url('rest-auth/registration/', include('rest_auth.registration.urls')),
+    url('account/', include('allauth.urls')),
+    url('accounts-rest/registration/account-confirm-email/(?P<key>.+)/$', confirm_email, name='account_confirm_email'),
 ]
