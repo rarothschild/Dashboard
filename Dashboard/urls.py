@@ -24,8 +24,4 @@ urlpatterns = [
     path('api/',include('api.urls')),
     path('apps/',include('myApps.urls')),
     path('',include('frontend.urls')),
-    url('rest-auth/', include('rest_auth.urls')),
-    url('rest-auth/registration/', include('rest_auth.registration.urls')),
-    url('account/', include('allauth.urls')),
-    url('accounts-rest/registration/account-confirm-email/(?P<key>.+)/$', confirm_email, name='account_confirm_email'),
 ]

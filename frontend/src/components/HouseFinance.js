@@ -11,16 +11,8 @@ export default function HouseFinance(props) {
     const [user,setUser] = useState(props.user)
     const [homes,setHomes] = useState([])
     
-    useEffect(async () => {
-        const fetchData = async () => {
-            const result = await axios(
-              'http://127.0.0.1:8000/MyApps/HouseTrack/ListHomes',
-            );
-            console.log(result.homes)
-            //setData(result.homes);
-          };
-      
-          fetchData();
+    useEffect(() => {
+           fetch()
       }, []);
 
     return(

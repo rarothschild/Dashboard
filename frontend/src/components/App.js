@@ -1,5 +1,5 @@
-import { Component } from "react";
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import UserProfCard from "./UserProfCard";
 import HouseFinance from "./HouseFinance";
 import HomePage from "./HomePage";
@@ -12,33 +12,40 @@ import Paper from '@mui/material/Paper';
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-  }
+function App(props) {
 
-  render() {
-    return (
-      <div>
-        <div id="header">
-          <UserProfCard />
-        </div>
-        <div id="content" className="center">
-        <Paper>
-          <Box sx={{ width: '500px' , height: '500px', padding: '20px'}}>
-            <Router>
-              <Switch>
-                <Route exact path="/"><p>This is the test page</p></Route>
-                <Route path='/HouseFinance'><HouseFinance /></Route>
-                <Route path='/CreateUser'><p>This is the user page</p></Route>
-              </Switch>
-            </Router>
-          </Box>
-        </Paper>
-        </div>
+  const [user, setUser] = useState([])
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/rest-auth/user/')
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        setUser(data)
+      })
+  }, []);
+
+  return (
+    <div>
+      <div id="header">
+        <UserProfCard user={user}/>
       </div>
-    );
-  }
+      <div id="content" className="center">
+      <Paper>
+        <Box sx={{ width: '500px' , height: '500px', padding: '20px'}}>
+          <Router>
+            <Switch>
+              <Route exact path="/"><p>Welcome to the home page.</p></Route>
+              <Route path='/HouseFinance'><HouseFinance /></Route>
+              <Route path='/CreateUser'><p>This is the user page</p></Route>
+            </Switch>
+          </Router>
+        </Box>
+      </Paper>
+      </div>
+    </div>
+  );
 }
 
 const container = document.getElementById("app");

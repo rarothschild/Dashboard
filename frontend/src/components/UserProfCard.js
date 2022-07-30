@@ -21,7 +21,12 @@ const ProfPic = styled('div')({
     backgroundColor: 'aliceblue',
 });
 
-function UserProfCard() {
+function UserProfCard(props) {
+    if ('user' in props) {
+        console.log(props.user); 
+    } else {
+        console.log('User signed out');
+    }
     return(
         <Box sx={{height: '100px', width: '250px', margin: '10px'}}>
             <Paper>
@@ -37,7 +42,7 @@ function UserProfCard() {
                         </div>
                     </Grid>
                     <Grid item xs={8}>
-                        Robert Rothschild
+                        {props.user.first_name}
                     </Grid>
                 </Grid>
             </Paper>
