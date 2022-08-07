@@ -49,13 +49,11 @@ function App(props) {
   const handleLogin = (event) => {
     //Prevent page reload
     event.preventDefault();
-    //var { uname, pass } = document.forms[0];
     
     var loginPost = {
       username: document.getElementById("unameValue").value,
       password: document.getElementById("passValue").value
     }
-    console.log(loginPost)
     
     axios.post('api/login/',loginPost)
     .then(res => console.log(res.data))
@@ -64,6 +62,8 @@ function App(props) {
           console.log(error.response.data); // => the response payload 
       }
     });
+
+    {setCSRF}
   };
 
   const LoginForm = (

@@ -1,5 +1,5 @@
 import json
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import ensure_csrf_cookie
 from rest_framework.decorators import api_view, permission_classes
@@ -34,6 +34,9 @@ def login_view(request):
         {"detail": "Invalid credentials"},
         status=400,
     )
+
+def logout_view(request):
+    logout(request)
 
 class CheckAuth(APIView):
     def get(self, request):
