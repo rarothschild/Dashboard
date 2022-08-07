@@ -36,53 +36,15 @@ function App(props) {
     setCsrftoken(data);
   };
 
-  //useEffect(() => {
-  //  fetch('http://127.0.0.1:8000/rest-auth/user/')
-  //    .then(res => {
-  //      return res.json();
-  //    })
-  //    .then(data => {
-  //      setUser(data)
-  //    })
-  //}, []);
-
-  const handleLogin = (event) => {
-    //Prevent page reload
-    event.preventDefault();
-    
-    var loginPost = {
-      username: document.getElementById("unameValue").value,
-      password: document.getElementById("passValue").value
-    }
-    
-    axios.post('api/login/',loginPost)
-    .then(res => console.log(res.data))
-    .catch((error) => {
-      if( error.response ){
-          console.log(error.response.data); // => the response payload 
-      }
-    });
-
-    {setCSRF}
-  };
-
-  const LoginForm = (
-    <div>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Username </label>
-          <input type="text" name="uname" id="unameValue" required />
-        </div>
-        <div>
-          <label>Password </label>
-          <input type="password" name="pass" id="passValue" required />
-        </div>
-        <div>
-          <input type="submit" />
-        </div>
-      </form>
-    </div>
-  );
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/api/user/')
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        setUser(data)
+      })
+  }, []);
 
   return (
     <div>

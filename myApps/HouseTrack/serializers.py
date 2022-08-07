@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from rest_auth.registration.serializers import RegisterSerializer
 from .models import Utility, Home, Ledger
 
 class ledgerSerializer(serializers.ModelSerializer):

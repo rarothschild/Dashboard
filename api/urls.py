@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import set_csrf_token, login_view, logout_view, CheckAuth
+from rest_framework import routers
 
 urlpatterns = [
     path('set-csrf/', set_csrf_token, name='Set-CSRF'),
