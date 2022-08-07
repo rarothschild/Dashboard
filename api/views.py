@@ -17,7 +17,7 @@ def set_csrf_token(request):
 @api_view(['POST'])
 @permission_classes((AllowAny,))
 def login_view(request):
-    data = json.loads(request.body)
+    data = json.loads(json.dumps(request.data))
     username = data.get('username')
     password = data.get('password')
     if username is None or password is None:

@@ -46,41 +46,36 @@ function App(props) {
   //    })
   //}, []);
 
-  const handleSubmit = (event) => {
+  const handleLogin = (event) => {
     //Prevent page reload
     event.preventDefault();
-
-    var { uname, pass } = document.forms[0];
-
-    // Find user login info
-    const userData = database.find((user) => user.username === uname.value);
-
-    // Compare user info
-    if (userData) {
-      if (userData.password !== pass.value) {
-        // Invalid password
-        setErrorMessages({ name: "pass", message: errors.pass });
-      } else {
-        setIsSubmitted(true);
-      }
-    } else {
-      // Username not found
-      setErrorMessages({ name: "uname", message: errors.uname });
+    //var { uname, pass } = document.forms[0];
+    
+    var loginPost = {
+      username: document.getElementById("unameValue").value,
+      password: document.getElementById("passValue").value
     }
+    console.log(loginPost)
+    
+    axios.post('api/login/',loginPost)
+    .then(res => console.log(res.data))
+    .catch((error) => {
+      if( error.response ){
+          console.log(error.response.data); // => the response payload 
+      }
+    });
   };
 
   const LoginForm = (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLogin}>
         <div>
           <label>Username </label>
-          <input type="text" name="uname" required />
-          {renderErrorMessage("uname")}
+          <input type="text" name="uname" id="unameValue" required />
         </div>
-        <div className>
+        <div>
           <label>Password </label>
-          <input type="password" name="pass" required />
-          {renderErrorMessage("pass")}
+          <input type="password" name="pass" id="passValue" required />
         </div>
         <div>
           <input type="submit" />
@@ -100,8 +95,12 @@ function App(props) {
           <Router>
             <Switch>
               <Route exact path="/">
-                <button onClick={setCSRF}>Set CSRF Token</button>
-                LoginForm()
+                <div>
+                  <button onClick={setCSRF}>Set CSRF Token</button>
+                </div>
+                <div>
+                  {LoginForm}
+                </div>
                 </Route>
               <Route path='/HouseFinance'><HouseFinance /></Route>
               <Route path='/CreateUser'><p>This is the user page</p></Route>
