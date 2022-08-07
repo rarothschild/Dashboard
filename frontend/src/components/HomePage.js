@@ -5,13 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-ro
 
 function HomePage(){
     return (
-        <Router>
-            <Switch>
-                <Route exact path="/"><p>This is the test page</p></Route>
-                <Route path='/HouseFinance' component={HouseFinance} />
-                <Route path='/CreateUser' component={CreateUser} />
-            </Switch>
-        </Router>
+        <button onClick={setCSRF}>Set CSRF Token</button>
     )
 }
 export default HomePage

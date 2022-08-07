@@ -1,41 +1,40 @@
+import json
+from django.contrib.auth import authenticate, login
+from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import ensure_csrf_cookie
+from rest_framework.decorators import api_view, permission_classes
+from django.http import JsonResponse
 from rest_framework.views import APIView
+from rest_framework.authentication import SessionAuthentication
 from rest_framework.response import Response
-from rest_framework import generics, status, viewsets
-from django.shortcuts import get_object_or_404
-from .serializers import UserSerializer
-from django.contrib.auth import get_user_model
+from rest_framework.permissions import AllowAny
 
-class UserViewSet(viewsets.ViewSet):
-    def list(self, request):
-        queryset = get_user_model().objects.all()
-        serializer = UserSerializer(queryset, many=True)
-        return Response(serializer.data)
+@api_view(('GET',))
+@ensure_csrf_cookie
+def set_csrf_token(request):
+    return JsonResponse({"details": "CSRF cookie set"})
 
-    def retrieve(self, request, pk=None):
-        queryset = get_user_model().objects.all()
-        user = get_object_or_404(queryset, pk=pk)
-        serializer = UserSerializer(user)
-        return Response(serializer.data)
+@api_view(['POST'])
+@permission_classes((AllowAny,))
+def login_view(request):
+    data = json.loads(request.body)
+    username = data.get('username')
+    password = data.get('password')
+    if username is None or password is None:
+        return Response({
+            "errors": {
+                "__all__": "Please enter both username and password"
+            }
+        }, status=400)
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return Response({"detail": "Success"})
+    return Response(
+        {"detail": "Invalid credentials"},
+        status=400,
+    )
 
-    def create(self, request):
-        VALID_USER_FIELDS = [f.name for f in get_user_model()._meta.fields]
-        DEFAULTS = {"id","username","emailaddress"}
-        serialized = UserSerializer(data=request.DATA)
-        if serialized.is_valid():
-            user_data = {field: data for (field, data) in request.DATA.items() if field in VALID_USER_FIELDS}
-            user_data.update(DEFAULTS)
-            user = get_user_model().objects.create_user(
-                **user_data
-            )
-            return Response(UserSerializer(instance=user).data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serialized._errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def update(self, request, pk=None):
-        pass
-
-    def partial_update(self, request, pk=None):
-        pass
-
-    def destroy(self, request, pk=None):
-        pass
+class CheckAuth(APIView):
+    def get(self, request):
+        return Response({'detail': 'You\'re Authenticated'})
