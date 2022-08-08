@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import set_csrf_token, login_view, logout_view, CheckAuth
+from .views import set_csrf_token, login_view, logout_view, CheckAuth, UserViewSet
 from rest_framework import routers
 
 urlpatterns = [
@@ -8,3 +8,8 @@ urlpatterns = [
     path('logout/', logout_view, name='Logout'),
     path('test-auth/', CheckAuth.as_view(), name='check-auth')
 ]
+
+router = routers.SimpleRouter()
+router.register(r'users', UserViewSet, basename='UserViewSet')
+
+urlpatterns += router.urls
