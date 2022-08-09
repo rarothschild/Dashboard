@@ -59,6 +59,7 @@ export default function UserProfCard(props) {
 function LoginSignup(props) {
 
     const [showLogin, setShowLogin] = useState(false);
+    const [showSignup, setShowSignup] = useState(false);
     const [csrftoken, setCsrftoken] = useState([]);
     
     const setCSRF = () => {
@@ -67,7 +68,16 @@ function LoginSignup(props) {
     };
 
     const handleLoginClick = event => {
+        if (showSignup) {
+            setShowSignup(false)
+        }
         setShowLogin(current => !current);
+    };
+    const handleSignupClick = event => {
+        if (showLogin) {
+            setShowLogin(false)
+        }
+        setShowSignup(current => !current);
     };
 
     // Handle Login
@@ -106,6 +116,30 @@ function LoginSignup(props) {
         )
     }
 
+    function SignupForm(props) {
+        return (
+            <div>
+                <form onSubmit={handleLogin}>
+                    <div>
+                        <label>Username </label>
+                        <input type="text" name="uname" id="unameValue" required />
+                    </div>
+                    <div>
+                        <label>Password </label>
+                        <input type="password" name="pass" id="passValue" required />
+                    </div>
+                    <div>
+                        <label>Re-Password </label>
+                        <input type="password" name="pass" id="passValue" required />
+                    </div>
+                    <div>
+                        <input type="submit" />
+                    </div>
+                </form>
+            </div>
+        )
+    }
+
     return(
         <Box sx={{height: '100px', width: '250px', margin: '10px'}}>
             <Paper>
@@ -114,9 +148,10 @@ function LoginSignup(props) {
                         <Button onClick={handleLoginClick}>Login</Button>
                     </Grid>
                     <Grid item xs={6}>
-                        <Button>Signup</Button>
+                        <Button onClick={handleSignupClick}>Signup</Button>
                     </Grid>
                     {showLogin && <Grid item xs={12}><LoginForm/></Grid>}
+                    {showSignup && <Grid item xs={12}><SignupForm/></Grid>}
                 </Grid>
             </Paper>
         </Box>
