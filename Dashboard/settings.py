@@ -120,7 +120,7 @@ LOGIN_URL = '/api/login/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Define user model
-AUTH_USER_MODEL = 'api.UserProfile'
+AUTH_USER_MODEL = 'api.User'
 
 # REST settings
 REST_FRAMEWORK = {
