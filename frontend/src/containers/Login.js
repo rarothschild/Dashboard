@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../actions/auth';
-import CSRFToken from '../components/CSRFToken';
+import CSRFToken from './CSRFToken';
 
 const Login = ({ login, isAuthenticated }) => {
     const [formData, setFormData] = useState({

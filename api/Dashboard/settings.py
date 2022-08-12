@@ -36,13 +36,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api.apps.ApiConfig',
+    'accounts.apps.AccountsConfig',
+    'user_profile.apps.UserProfileConfig',
     'rest_framework',
     'rest_framework.authtoken',
-    'frontend.apps.FrontendConfig',
     'rest_auth.registration',
-    'myApps.HouseTrack.apps.HousetrackConfig',
-    'myApps.BackTester.apps.BacktesterConfig',
     'rest_auth'
 ]
 
@@ -113,14 +111,14 @@ USE_TZ = True
 
 # Set default URLs
 STATIC_URL = '/static/'
-LOGIN_URL = '/api/login/'
+LOGIN_URL = '/accounts/login/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Define user model
-AUTH_USER_MODEL = 'api.User'
+AUTH_USER_MODEL = 'accounts.User'
 
 # REST settings
 REST_FRAMEWORK = {
@@ -132,7 +130,7 @@ REST_FRAMEWORK = {
     ]
 }
 REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'api.serializers.UserSerializer',
+    'USER_DETAILS_SERIALIZER': 'api.user_profile.serializers.UserSerializer',
 }
 
 

@@ -9,7 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { styled } from '@mui/material/styles';
-import axios from './axiosConfig';
+import axios from '../axiosConfig';
 
 import Login from '../containers/Login';
 import Register from '../containers/Register';
@@ -74,34 +74,6 @@ function LoginSignup(props) {
             setShowLogin(false)
         }
         setShowSignup(current => !current);
-    };
-
-    // Handle Login
-    const handleLogin = (event) => {
-        const [formData,setFormData] = setState({
-            username: '',
-            password: '',
-            re_password: ''
-        })
-
-        const onChange = e => setFormData({...formData, [e.target.name]: e.target.value})
-
-        const onSumbit = e => {
-            e.preventDefault();
-
-            if (password === re_password) {
-                
-            }
-        }
-
-        axios.post('api/login/',loginPost)
-            .then(res => console.log(res.data))
-            .catch((error) => {
-            if( error.response ){
-                console.log(error.response.data); // => the response payload 
-            }
-        });
-        {setCSRF}
     };
 
     return(

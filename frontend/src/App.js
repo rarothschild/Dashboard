@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom"
-import axios from './components/axiosConfig';
 import UserProfCard from "./components/UserProfCard";
 import HouseFinance from "./components/HouseFinance";
 import Box from '@mui/material/Box';
@@ -15,7 +14,7 @@ function App(props) {
     <Provider store={store}>
       <div id="app" className="center">
         <div id="header">
-          <UserProfCard user={user}/>
+          <UserProfCard />
         </div>
         <div id="content">
           <Paper>
