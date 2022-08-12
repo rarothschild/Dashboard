@@ -9,15 +9,10 @@ import IconButton from '@mui/material/IconButton';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { styled } from '@mui/material/styles';
-import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import FormControl from "@material-ui/core/FormControl";
-import { Link } from "react-router-dom";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import axios from './axiosConfig';
+
+import Login from '../containers/Login';
+import Register from '../containers/Register';
 
 const ProfPic = styled('div')({
     backgroundColor: 'aliceblue',
@@ -67,6 +62,7 @@ function LoginSignup(props) {
         setCsrftoken(data);
     };
 
+    // Button Callbacks
     const handleLoginClick = event => {
         if (showSignup) {
             setShowSignup(false)
@@ -82,10 +78,22 @@ function LoginSignup(props) {
 
     // Handle Login
     const handleLogin = (event) => {
-        var loginPost = {
-            username: document.getElementById("unameValue").value,
-            password: document.getElementById("passValue").value
+        const [formData,setFormData] = setState({
+            username: '',
+            password: '',
+            re_password: ''
+        })
+
+        const onChange = e => setFormData({...formData, [e.target.name]: e.target.value})
+
+        const onSumbit = e => {
+            e.preventDefault();
+
+            if (password === re_password) {
+                
+            }
         }
+
         axios.post('api/login/',loginPost)
             .then(res => console.log(res.data))
             .catch((error) => {
@@ -95,50 +103,6 @@ function LoginSignup(props) {
         });
         {setCSRF}
     };
-
-    function LoginForm(props) {
-        return (
-            <div>
-                <form onSubmit={handleLogin}>
-                    <div>
-                        <label>Username </label>
-                        <input type="text" name="uname" id="unameValue" required />
-                    </div>
-                    <div>
-                        <label>Password </label>
-                        <input type="password" name="pass" id="passValue" required />
-                    </div>
-                    <div>
-                        <input type="submit" />
-                    </div>
-                </form>
-            </div>
-        )
-    }
-
-    function SignupForm(props) {
-        return (
-            <div>
-                <form onSubmit={handleLogin}>
-                    <div>
-                        <label>Username </label>
-                        <input type="text" name="uname" id="unameValue" required />
-                    </div>
-                    <div>
-                        <label>Password </label>
-                        <input type="password" name="pass" id="passValue" required />
-                    </div>
-                    <div>
-                        <label>Re-Password </label>
-                        <input type="password" name="pass" id="passValue" required />
-                    </div>
-                    <div>
-                        <input type="submit" />
-                    </div>
-                </form>
-            </div>
-        )
-    }
 
     return(
         <Box sx={{height: '100px', width: '250px', margin: '10px'}}>
