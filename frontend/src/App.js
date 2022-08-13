@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import UserProfCard from "./components/UserProfCard";
 import HouseFinance from "./components/HouseFinance";
 import Box from '@mui/material/Box';
@@ -20,11 +20,11 @@ function App(props) {
           <Paper>
             <Box sx={{ width: '500px' , height: '500px', padding: '20px'}}>
               <Router>
-                <Switch>
+                <Routes>
                   <Route exact path="/"><p>This is the home page</p></Route>
                   <Route path='/HouseFinance'><HouseFinance /></Route>
                   <Route path='/CreateUser'><p>This is the user page</p></Route>
-                </Switch>
+                </Routes>
               </Router>
             </Box>
           </Paper>

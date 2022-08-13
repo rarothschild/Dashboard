@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import HouseFinance from "./HouseFinance"
 import CreateUser from "./CreateUser"
-import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom"
 
 function HomePage(){
     return (
