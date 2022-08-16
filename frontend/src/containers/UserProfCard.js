@@ -9,10 +9,9 @@ import IconButton from '@mui/material/IconButton';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { styled } from '@mui/material/styles';
-import axios from '../axiosConfig';
 
-import Login from '../containers/Login';
-import Register from '../containers/Register';
+import Login from './Login';
+import Register from './Register';
 
 const ProfPic = styled('div')({
     backgroundColor: 'aliceblue',
@@ -45,7 +44,7 @@ export default function UserProfCard(props) {
             )
         }
     
-    if (props.user.length === 0) {
+    if (props.user === 0) {
         return <LoginSignup />
     }
     return <UserCard />
@@ -55,12 +54,6 @@ function LoginSignup(props) {
 
     const [showLogin, setShowLogin] = useState(false);
     const [showSignup, setShowSignup] = useState(false);
-    const [csrftoken, setCsrftoken] = useState([]);
-    
-    const setCSRF = () => {
-        const { data } = axios.get('api/set-csrf/').then(res => console.log(res))
-        setCsrftoken(data);
-    };
 
     // Button Callbacks
     const handleLoginClick = event => {
@@ -69,6 +62,7 @@ function LoginSignup(props) {
         }
         setShowLogin(current => !current);
     };
+
     const handleSignupClick = event => {
         if (showLogin) {
             setShowLogin(false)
@@ -86,8 +80,8 @@ function LoginSignup(props) {
                     <Grid item xs={6}>
                         <Button onClick={handleSignupClick}>Signup</Button>
                     </Grid>
-                    {showLogin && <Grid item xs={12}><LoginForm/></Grid>}
-                    {showSignup && <Grid item xs={12}><SignupForm/></Grid>}
+                    {showLogin && <Grid item xs={12}><Login /></Grid>}
+                    {showSignup && <Grid item xs={12}><Register /></Grid>}
                 </Grid>
             </Paper>
         </Box>

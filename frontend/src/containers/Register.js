@@ -23,7 +23,7 @@ const Register = ({ register }) => {
 
     return (
         <div>
-            <form onSubmit={handleLogin}>
+            <form onSubmit={onSubmit}>
                 <div>
                     <label>Username </label>
                     <input type="text" name="uname" id="unameValue" required />
@@ -42,5 +42,10 @@ const Register = ({ register }) => {
             </form>
         </div>
     )
-
 }
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { register })(Register);

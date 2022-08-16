@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../actions/auth';
 import CSRFToken from './CSRFToken';
@@ -21,7 +21,7 @@ const Login = ({ login, isAuthenticated }) => {
     };
 
     if (isAuthenticated)
-        return <Redirect to='/dashboard' />;
+        return <Navigate to='/' />;
 
     return (
         <div>

@@ -112,8 +112,13 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-# Set default URLs
+# Set static file
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'build/static')
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 LOGIN_URL = '/accounts/login/'
 
 # Default primary key field type

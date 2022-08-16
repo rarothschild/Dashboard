@@ -1,16 +1,8 @@
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from '@redux-devtools/extension';
-import thunk from 'redux-thunk';
-import rootReducer from './reducers';
+import { configureStore } from '@reduxjs/toolkit'
 
-const initialState = {};
+import rootReducer from './reducers'
 
-const middleware = [thunk];
-
-const store = createStore(
-    rootReducer,
-    initialState,
-    composeWithDevTools(applyMiddleware(...middleware))
-);
+const store = configureStore({ reducer: rootReducer })
+// The store now has redux-thunk added and the Redux DevTools Extension is turned on
 
 export default store;
