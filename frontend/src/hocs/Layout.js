@@ -4,6 +4,13 @@ import { checkAuthenticated } from '../actions/auth';
 import { load_user } from '../actions/profile';
 
 const Layout = ({children, checkAuthenticated, load_user}) => {
+    
+    useEffect(() => {
+        checkAuthenticated();
+        load_user();
+    },[])
+
+    console.log()
 
     return(
         <Fragment>
